@@ -45,7 +45,7 @@ ulaşabilirsiniz.
 
 ## Oyunların Satış Tarihine Göre Satış Fiyatı
 
-![gq1](gq1.png)
+![vgsales](vgsales.png)
 
 
 
