@@ -43,13 +43,20 @@ ulaşabilirsiniz.
 
 *reshape2: veri setindeki sütünları ve satırları düzenlemeye yarar.
 
-## Oyunların Satış Tarihine Göre Satış Fiyatı
+## Oyunların Yatış Tarihine Göre Satış Fiyatı
 
 ![vgsales](vgsales.png)
 
 *Oyunların yayın tarihine göre satış sayısı görselleştirilmiştir grafik kodlarına kodlar.R'dan ulaşabilirsiniz.
 
+## Yıllara Göre Yayınlanan Oyun Sayısı
+
 ![vgsales2](vgsales2.png)
+
+*Bu grafikte de yayınlanan toplam oyun sayısını görmekteyiz. 
+
+## Steam'ın Yıllık Çevrimiçi Oyuncu sayısı
+![steam](steam.png)
 
 
 
