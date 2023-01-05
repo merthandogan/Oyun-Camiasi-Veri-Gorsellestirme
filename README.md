@@ -22,8 +22,32 @@ ulaşabilirsiniz.
 ## Çalışmanın Amacı
 
 *Bu çalışmanın amacı; Gitgide gelişen teklonoji ve yazılım dilleri sayesinde geliştirilen ve yayınlanan oyunların ne derece rağbet gördüğünü görselleştirmek.
+
 *Giderek artan oyuncu ve oyun sayısının eğlenceden çok bir iş sektörü haline gelmesini açıklamak.
+
 *İnsanların eğlenmek ve zaman geçirmek için gerçek hayat yerine sanal dünyayı tercih ettiğini göstermek.
+
+##Kullanılan Program ve Paket Programlar.
+
+*Bu çalışma yapılırken R programlama dili kullanılmış ve paket program olarak;
+
+*ggplot2: Grafik oluşturmaya ve düzenlemeye yarar.
+
+*tidyverse: Veri setinde çeşitli manipülasyonlar yaparak veriyi kullanışlı haline getirir.
+
+*thematic: Oluşturulan grafiklerini temasını ve rengini belirlemeye yarar. Bu paket içerisinde showtext, ragg, bslib yer almaktadır.
+
+*Dplyr: Veri işlemeyi ve veri analizi sürecini kolaylaştıran ve en çok kullanılan paketlerden birisidir.
+
+*gridExtra: Grafikleri ayrı ayrı ve yan yana göstermeye yarar.
+
+*reshape2: veri setindeki sütünları ve satırları düzenlemeye yarar.
+
+## Oyunların Satış Tarihine Göre Satış Fiyatı
+
+![gq1]("C:\Users\merth\Desktop\gq1.png")
+
+
 
 
 
