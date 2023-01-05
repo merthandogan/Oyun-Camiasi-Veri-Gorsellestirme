@@ -21,7 +21,7 @@ ulaşabilirsiniz.
 
 ## Çalışmanın Amacı
 
-*Bu çalışmanın amacı; Gitgide gelişen teklonoji ve yazılım dilleri sayesinde geliştirilen ve yayınlanan oyunların ne derece rağbet gördüğünü görselleştirmek.
+* Bu çalışmanın amacı; Gitgide gelişen teklonoji ve yazılım dilleri sayesinde geliştirilen ve yayınlanan oyunların ne derece rağbet gördüğünü görselleştirmek.
 
 *Giderek artan oyuncu ve oyun sayısının eğlenceden çok bir iş sektörü haline gelmesini açıklamak.
 
