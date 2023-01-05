@@ -1,3 +1,4 @@
+#kullanacağımız paket programları indirelim.
 install.packages("ggplot2")
 install.packages("tidyverse")
 install.packages("thematic")
@@ -26,13 +27,12 @@ library(rmarkdown)
 
 
 #Steam'ın yıllık ortalama oyuncu sayısı grafiğini görselleştirirken;
-#https://backlinko.com/steam-users (kaynak)
 #Verilerle bir data set oluşturdum.
 yil = c(2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021)
 sayi = c(0.28,0.62,1.5,2.5,3.17,4.67,5.79,6.92,8.58,11.35,12.25,16.45,14.8,23.96,25.65)
 steamyillik = data.frame(yil,sayi)
 
-#thematic paketi ile kendime koyu ve pembe temayı seçtim.
+#thematic paketi ile siyah beyaz bir tema oluşturuyorum
 thematic_on(bg = "#222222", fg = "gray100", accent = "#0CE3AC", font = "gray100")
 
 
@@ -48,49 +48,63 @@ ggplot(steamyillik,aes(x=factor(yil), y=sayi))+
 
 
 ---------------------------------------------------------------------------------------------------
-  
-  twtop5oyun = twitch %>%
+#Twitch.tv'nin İzleyici ve yayıncı sayısının göselleştirilmesi
+#veri setini çekmek için
+ twitch = read_csv("../input/evolution-of-top-games-on-twitch/Twitch_game_data.csv")
+
+ #twitch veri setindeki en çok izlenen 5 oyunu çekmek için tidyverse kullanalım.
+twtop5oyun = twitch %>%
   filter(Game %in% c("League of Legends","Counter-Strike: Global Offensive","Dota 2","Minecraft","VALORANT"))
 
+#Yine tidyverse kullanarak veri setindeki yıl, oyun ve ortalama izlenen saati çekelim.
 yilizlenme = twtop5oyun %>%
   drop_na() %>%
   group_by(Year,Game) %>%
   summarise(ortizlenme = mean(Hours_watched))
-thematic_on(bg = "#222222", fg ="violetred1", accent = "#0CE3AC", font = "deeppink")
+
+#thematic paketi ile temamızı ve renklerimizi belirleyelim
 thematic_shiny(bg = "#222222", fg ="gray100", accent = "#0CE3AC", font = "deeppink")
 
-
+#ilk grafiğimizi oluşturalım oluşturalım
 g1 = ggplot(yilizlenme, aes(x=Year,y=ortizlenme, colour=Game))+
   geom_point()+
   geom_line()+
   scale_y_continuous(labels = scales::comma)+
   labs(x="Yıl",y="Ortalama İzlenme sayısı",title="Twitch'te Yıllara Göre Oyunların İzlenme Sayısı")
 
+#yıllara göre ortalama yayıncı sayısını bulmak için;
 yayinciizlenme = twtop5oyun %>%
   drop_na() %>%
   group_by(Year) %>%
   summarise(ortyayincisayi = mean(Peak_channels))
 
+#ikinci grafiğimi oluşturdum
 g2 = ggplot(yayinciizlenme,aes(x=Year,y=ortyayincisayi))+
   geom_point()+
   geom_line()+
   labs(x="Yıl",y="Yayıncı Sayısı",title="Twitch'te Yıllara Göre Yayıncı Sayısı")
 
-
+#girdextra paketi ile iki grafiği side by side (yanyana oluşturalım)
 grid.arrange(
   g1,
   g2
   
 )
 ----------------------------------------------------------------------------------------
-  
+#yıllara göre en çok satan oyunların görselleştirilmesi
+#veri setini çekelim 
+vgsales = read.csv("../input/videogamesales/vgsales.csv", stringsAsFactors = FALSE)
+
+#vgsales1 adı altında yeni bir veri seti oluşturalım ve bu veri setini manipüle edelim
   vgsales1 = vgsales %>%
   select(Year, NA_Sales, EU_Sales, JP_Sales, Global_Sales)%>%
   melt(id.vars = "Year")%>%
   group_by(Year, variable) %>% 
   summarise(total.sales = sum(value))
 
+#ingilizce olan bölge isimlerini türkçeleştirelim.
 levels(vgsales1$variable) = c("Kuzey Amerika", "Avrupa", "Japonya", "Küresel")
+#grafiğimizi oluşturalım
 ggplot(vgsales1, aes(x = Year, y = total.sales, color = variable, group = variable)) +
   geom_point() + 
   geom_line() + 
@@ -106,7 +120,7 @@ thematic_on(bg = "gray100", fg ="navyblue", accent = "#222222", font = "")
 
 
 
-
+#Yıllara göre yayınlanan oyun sayısının görselleştirilmesi
 vgsales %>%
   group_by(Year) %>%
   summarize(Number_of_Games = n()) %>%
