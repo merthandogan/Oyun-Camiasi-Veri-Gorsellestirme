@@ -47,6 +47,12 @@ ulaşabilirsiniz.
 
 ![vgsales](vgsales.png)
 
+*Oyunların yayın tarihine göre satış sayısı görselleştirilmiştir grafik kodlarına kodlar.R'dan ulaşabilirsiniz.
+
+![vgsales2](vgsales2.png)
+
+
+
 
 
 
